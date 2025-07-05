@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Link Access</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #000000, #2e005f, #000066);
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+    }
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+    .telegram-button {
+      display: inline-block;
+      background-color: #0088cc;
+      color: white;
+      padding: 12px 25px;
+      font-size: 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-bottom: 30px;
+    }
+    .link-button {
+      display: inline-block;
+      background-color: #ffcc00;
+      color: black;
+      padding: 14px 30px;
+      font-size: 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Before You Access the Link</h2>
+    <p>Please consider joining our Telegram Channel!</p>
+
+    <a class="telegram-button" href="https://t.me/Anime_Obito_Boss" target="_blank">Join Telegram Channel</a>
+
+    <br><br>
+
+    <a id="real-link" class="link-button" href="#">👉 Link given to you 👈</a>
+  </div>
+
+  <script>
+    // Get the URL parameter ?site=
+    const urlParams = new URLSearchParams(window.location.search);
+    const realLink = urlParams.get('site');
+    
+    if (realLink) {
+      document.getElementById('real-link').href = realLink;
+    } else {
+      document.getElementById('real-link').innerText = "❌ No link found!";
+      document.getElementById('real-link').style.backgroundColor = "#aa0000";
+    }
+  </script>
+</body>
+</html>
