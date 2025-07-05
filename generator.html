@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Link Generator</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #000000, #2e005f, #000066);
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+    }
+    .box {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      max-width: 500px;
+      margin: auto;
+      border-radius: 20px;
+    }
+    input[type="text"] {
+      width: 90%;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 20px;
+    }
+    button {
+      background-color: #ffcc00;
+      padding: 10px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .link-button {
+      display: inline-block;
+      background-color: #00ffcc;
+      color: black;
+      padding: 14px 30px;
+      font-size: 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Link Generator</h2>
+    <p>Paste your real link below:</p>
+    <input type="text" id="realLink" placeholder="https://example.com">
+    <br>
+    <button onclick="generateLink()">Generate My Page Link</button>
+    <div id="output"></div>
+  </div>
+
+  <script>
+    function generateLink() {
+      const userLink = document.getElementById('realLink').value.trim();
+      if (!userLink) {
+        alert("Please paste a link first!");
+        return;
+      }
+
+      const encoded = encodeURIComponent(userLink);
+      const result = `https://eren-yeager-42.github.io/ErenLinks/?site=${encoded}`;
+
+      document.getElementById('output').innerHTML = `
+        <a href="${result}" target="_blank" class="link-button">👉 Your Link 👈</a>
+      `;
+    }
+  </script>
+</body>
+</html>
