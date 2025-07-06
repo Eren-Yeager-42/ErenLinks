@@ -23,6 +23,16 @@
       padding: 30px;
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
     }
+    .telegram-button {
+      display: inline-block;
+      background-color: #0088cc;
+      color: white;
+      padding: 12px 25px;
+      font-size: 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-bottom: 30px;
+    }
     input[type="password"] {
       width: 90%;
       padding: 12px;
@@ -55,9 +65,13 @@
 </head>
 <body>
   <div class="container">
-    <img src="logo.png" alt="ErenLinks Logo" style="width: 120px; margin-bottom: 20px;">
-    <h2>This Link is Password Protected</h2>
-    <input type="password" id="passInput" placeholder="Enter password to continue">
+    <h2>Before You Access the Link</h2>
+    
+    <!-- Telegram Button -->
+    <a class="telegram-button" href="https://t.me/YOUR_CHANNEL_HERE" target="_blank">📢 Join our Telegram Channel</a><br><br>
+
+    <!-- Password Input -->
+    <input type="password" id="passInput" placeholder="Enter password to unlock">
     <br>
     <button onclick="checkPassword()">Unlock</button>
     <div id="output"></div>
