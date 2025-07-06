@@ -2,15 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Link Generator</title>
+  <title>Protected Link Generator</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: linear-gradient(135deg, #000000, #2e005f, #000066);
+      background-size: cover;
+      background-attachment: fixed;
       color: white;
       text-align: center;
       padding: 50px 20px;
+      min-height: 100vh;
     }
     .box {
       background-color: rgba(0, 0, 0, 0.6);
@@ -19,7 +22,7 @@
       margin: auto;
       border-radius: 20px;
     }
-    input[type="text"] {
+    input[type="text"], input[type="password"] {
       width: 90%;
       padding: 12px;
       font-size: 16px;
@@ -51,28 +54,112 @@
 </head>
 <body>
   <div class="box">
-    <img src="logo.png" alt="ErenLinks Logo" style="width: 120px; margin-bottom: 20px;">
-    <h2>Link Generator</h2>
-    <p>Paste your real link below:</p>
-    <input type="text" id="realLink" placeholder="https://example.com">
-    <br>
-    <button onclick="generateLink()">Generate My Page Link</button>
+    <h2>Password Protected Link Generator</h2>
+    <input type="text" id="realLink" placeholder="Enter your real link here"><br>
+    <input type="password" id="password" placeholder="Enter password to unlock"><br>
+    <button onclick="generate()">Generate Protected Link</button>
     <div id="output"></div>
   </div>
 
   <script>
-    function generateLink() {
-      const userLink = document.getElementById('realLink').value.trim();
-      if (!userLink) {
-        alert("Please paste a link first!");
+    function generate() {
+      const link = document.getElementById('realLink').value.trim();
+      const pass = document.getElementById('password').value.trim();
+
+      if (!link || !pass) {
+        alert("Please fill both fields.");
         return;
       }
 
-      const encoded = encodeURIComponent(userLink);
-      const result = `https://eren-yeager-42.github.io/ErenLinks/final.html?site=${encoded}`;
+      const encodedLink = encodeURIComponent(link);
+      const finalURL = `https://eren-yeager-42.github.io/ErenLinks/final.html?site=${encodedLink}&key=${encodeURIComponent(pass)}`;
 
       document.getElementById('output').innerHTML = `
-        <a href="${result}" target="_blank" class="link-button">👉 Your Link 👈</a>
+        <p>Here is your link:</p>
+        <a class="link-button" href="${finalURL}" target="_blank">👉 Protected Link 👈</a>
+      `;
+    }
+  </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Protected Link Generator</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #000000, #2e005f, #000066);
+      background-size: cover;
+      background-attachment: fixed;
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+      min-height: 100vh;
+    }
+    .box {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      max-width: 500px;
+      margin: auto;
+      border-radius: 20px;
+    }
+    input[type="text"], input[type="password"] {
+      width: 90%;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 20px;
+    }
+    button {
+      background-color: #ffcc00;
+      padding: 10px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .link-button {
+      display: inline-block;
+      background-color: #00ffcc;
+      color: black;
+      padding: 14px 30px;
+      font-size: 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Password Protected Link Generator</h2>
+    <input type="text" id="realLink" placeholder="Enter your real link here"><br>
+    <input type="password" id="password" placeholder="Enter password to unlock"><br>
+    <button onclick="generate()">Generate Protected Link</button>
+    <div id="output"></div>
+  </div>
+
+  <script>
+    function generate() {
+      const link = document.getElementById('realLink').value.trim();
+      const pass = document.getElementById('password').value.trim();
+
+      if (!link || !pass) {
+        alert("Please fill both fields.");
+        return;
+      }
+
+      const encodedLink = encodeURIComponent(link);
+      const finalURL = `https://eren-yeager-42.github.io/ErenLinks/final.html?site=${encodedLink}&key=${encodeURIComponent(pass)}`;
+
+      document.getElementById('output').innerHTML = `
+        <p>Here is your link:</p>
+        <a class="link-button" href="${finalURL}" target="_blank">👉 Protected Link 👈</a>
       `;
     }
   </script>
