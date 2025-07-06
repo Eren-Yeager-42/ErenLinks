@@ -56,8 +56,11 @@
   <div class="box">
     <img src="logo.png" alt="ErenLinks Logo" style="width: 120px; margin-bottom: 20px;">
     <h2>Password Protected Link Generator</h2>
-    <input type="text" id="realLink" placeholder="Enter your real link here"><br>
-    <input type="password" id="password" placeholder="Enter password to unlock"><br>
+    <label for="realLink" style="display:block; text-align:left; margin-bottom:5px;">Enter your link here:</label>
+<input type="text" id="realLink" placeholder="https://example.com"><br><br>
+
+<label for="password" style="display:block; text-align:left; margin-bottom:5px;">Enter your password:</label>
+<input type="password" id="password" placeholder="********"><br>
     <button onclick="generate()">Generate Protected Link</button>
     <div id="output"></div>
   </div>
