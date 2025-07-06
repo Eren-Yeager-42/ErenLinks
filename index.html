@@ -63,25 +63,32 @@
   </div>
 
   <script>
-    function generate() {
-      const link = document.getElementById('realLink').value.trim();
-      const pass = document.getElementById('password').value.trim();
+  function generate() {
+    const link = document.getElementById('realLink').value.trim();
+    const pass = document.getElementById('password').value.trim();
 
-      if (!link || !pass) {
-        alert("Please fill both fields.");
-        return;
-      }
-
-      const encodedLink = encodeURIComponent(link);
-      const finalURL = `https://eren-yeager-42.github.io/ErenLinks/final.html?site=${encodedLink}&key=${encodeURIComponent(pass)}`;
-
-      document.getElementById('output').innerHTML = `
-  <p>Here is your link:</p>
-  <a class="link-button" href="${finalURL}" target="_blank">👉 Protected Link 👈</a><br><br>
-  <button onclick="copyLink('${finalURL}')" style="margin-top:10px; background:#0088cc; color:white; padding:10px 20px; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">📋 Copy Link</button>
-  <p id="copyMsg" style="color:lightgreen; margin-top:10px;"></p>
-`;
+    if (!link || !pass) {
+      alert("Please fill both fields.");
+      return;
     }
-  </script>
+
+    const encodedLink = encodeURIComponent(link);
+    const finalURL = `https://eren-yeager-42.github.io/ErenLinks/final.html?site=${encodedLink}&key=${encodeURIComponent(pass)}`;
+
+    document.getElementById('output').innerHTML = `
+      <p>Here is your link:</p>
+      <a class="link-button" href="${finalURL}" target="_blank">👉 Protected Link 👈</a><br><br>
+      <button onclick="copyLink('${finalURL}')" style="margin-top:10px; background:#0088cc; color:white; padding:10px 20px; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">📋 Copy Link</button>
+      <p id="copyMsg" style="color:lightgreen; margin-top:10px;"></p>
+    `;
+  }
+
+  function copyLink(link) {
+    navigator.clipboard.writeText(link).then(() => {
+      document.getElementById('copyMsg').textContent = "✅ Link copied to clipboard!";
+      setTimeout(() => document.getElementById('copyMsg').textContent = "", 3000);
+    });
+  }
+</script>
 </body>
 </html>
